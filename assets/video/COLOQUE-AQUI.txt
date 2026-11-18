@@ -1,0 +1,4 @@
+Coloque aqui os VÍDEOS do álbum (mp4). Eles tocam sem som dentro das páginas.
+Use vídeos curtos (5 a 20 segundos) e leves.
+A ordem segue a ordem dos nomes; entra 1 vídeo a cada 4 fotos (muda em config.js > album > videoACada).
+Depois, dê duplo clique em atualizar-galeria.bat.

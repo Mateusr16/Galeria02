@@ -1,0 +1,13 @@
+GALERIA 02 — ÁLBUM DE FOTOGRAFIA — comece por aqui
+==================================================
+
+1) Abra o arquivo  manual.html  (duplo clique). Ele explica tudo.
+
+Resumo rápido:
+  - Fotos do álbum ........ assets/fotos   (ordem = ordem dos nomes: 01.jpg, 02.jpg...)
+  - Vídeos do álbum ....... assets/video   (tocam mudos dentro das páginas)
+  - Imagem da capa ........ assets/capa    (opcional)
+  - Música ................ assets/musica
+  - Depois de mexer nas pastas: duplo clique em  atualizar-galeria.bat
+  - Abra o ................ index.html
+  - Nomes, data e textos .. edite o config.js

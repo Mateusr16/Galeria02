@@ -1,0 +1,2 @@
+Coloque aqui UMA música (mp3/m4a/ogg). Se a pasta ficar vazia, toca a trilha suave gerada pela página.
+Depois de colocar, dê duplo clique em atualizar-galeria.bat.

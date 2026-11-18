@@ -1,0 +1,2 @@
+Coloque aqui UMA imagem (jpg/png/webp). Ela aparece na janelinha da capa do álbum. Opcional: sem ela, usa a primeira foto.
+Depois de colocar, dê duplo clique em atualizar-galeria.bat.

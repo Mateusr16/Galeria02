@@ -1,0 +1,4 @@
+Coloque aqui as FOTOS do álbum (jpg/png/webp).
+A ordem das páginas segue a ordem dos nomes: 01.jpg, 02.jpg, 03.jpg...
+Pode criar subpastas (ex.: 01-preparativos, 02-cerimonia); elas também entram em ordem de nome.
+Depois, dê duplo clique em atualizar-galeria.bat.

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manual — Galeria 02 (Álbum de fotografia)</title>
+<style>
+:root{--ink:#24291c;--olive:#4f5d2f;--cream:#f4f0e6;--gold:#a08a55;--line:#ddd6c3}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.65 "Segoe UI",system-ui,sans-serif}
+.wrap{max-width:820px;margin:auto;padding:48px 22px 90px}
+h1{font:600 40px/1.15 Georgia,serif;margin:0 0 6px}
+h2{font:600 26px/1.2 Georgia,serif;margin:56px 0 12px;padding-top:14px;border-top:1px solid var(--line)}
+h3{font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);margin:28px 0 6px}
+p{margin:8px 0}
+.lead{color:#5d6052;font-size:18px}
+code,.k{background:#e9e4d6;border-radius:5px;padding:1px 7px;font:14px Consolas,monospace}
+pre{background:#24291c;color:#f4f0e6;border-radius:10px;padding:18px 20px;overflow:auto;font:14px/1.6 Consolas,monospace}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:15px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--gold);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.box{background:#fff;border:1px solid var(--line);border-left:4px solid var(--olive);border-radius:8px;padding:14px 18px;margin:16px 0}
+.warn{border-left-color:#b5822d}
+ol,ul{padding-left:22px}li{margin:5px 0}
+.toc a{color:var(--olive);text-decoration:none}.toc a:hover{text-decoration:underline}
+</style>
+</head>
+<body><div class="wrap">
+
+<h1>Manual — Galeria 02</h1>
+<p class="lead">Um álbum de fotografia de verdade: capa fechada, folhas que viram, fotos e vídeos (sem som) dentro das páginas.</p>
+
+<p class="toc">
+<a href="#resumo">1. Resumo</a> ·
+<a href="#como">2. Como o álbum se comporta</a> ·
+<a href="#pastas">3. Mapa das pastas</a> ·
+<a href="#passo">4. Passo a passo</a> ·
+<a href="#textos">5. Textos e ajustes</a> ·
+<a href="#dicas">6. Tamanho e formato</a> ·
+<a href="#problemas">7. Problemas comuns</a> ·
+<a href="#dentro">8. Por dentro</a>
+</p>
+
+<h2 id="resumo">1. Resumo em 4 linhas</h2>
+<ol>
+  <li>Coloque as fotos em <code>assets/fotos</code> e os vídeos em <code>assets/video</code> (música em <code>assets/musica</code>).</li>
+  <li>Dê <b>duplo clique</b> em <code>atualizar-galeria.bat</code>.</li>
+  <li>Abra o <code>index.html</code> no navegador (ou atualize com <span class="k">F5</span>).</li>
+  <li>Para trocar nomes, data e textos, edite o <code>config.js</code> com o Bloco de Notas.</li>
+</ol>
+<div class="box">Sempre que colocar, tirar ou renomear arquivos nas pastas, rode o <code>atualizar-galeria.bat</code> de novo. As páginas do álbum são montadas sozinhas com o que estiver nas pastas.</div>
+
+<h2 id="como">2. Como o álbum se comporta</h2>
+<ul>
+  <li><b>Tela inicial:</b> o álbum fechado, com o nome do casal e a data em dourado na capa. Pode clicar em <b>Abrir Álbum</b> ou na própria capa.</li>
+  <li><b>Abrindo:</b> a capa abre e várias folhas passam rapidamente até a primeira página dupla. A página da esquerda é a página de rosto; a da direita é a primeira de fotos.</li>
+  <li><b>Seguir:</b> a folha vira para o lado esquerdo, revelando a próxima página dupla.</li>
+  <li><b>Voltar:</b> a folha volta. Na primeira página dupla, <b>Voltar</b> fecha o álbum.</li>
+  <li><b>Última página dupla:</b> a mensagem final, com os botões “Rever álbum” (volta ao início) e “Compartilhar”.</li>
+  <li><b>Outras formas de virar:</b> clicar na metade direita/esquerda do álbum, setas ← → do teclado, ou arrastar o dedo no celular.</li>
+  <li><b>Vídeos:</b> tocam em loop e <b>sem som</b>, só enquanto a página está visível.</li>
+</ul>
+
+<h2 id="pastas">3. Mapa das pastas</h2>
+<pre>Galeria02/
+├─ index.html              a página (não precisa mexer)
+├─ config.js               ★ nomes, data, textos, mensagem, modelos de página
+├─ atualizar-galeria.bat   ★ duplo clique depois de mexer nas pastas
+├─ gerar_galeria.py        o que o .bat executa
+├─ manual.html             este manual
+└─ assets/
+   ├─ fotos/               ★ as fotos (ordem = ordem dos nomes)
+   ├─ video/               ★ os vídeos (tocam mudos nas páginas)
+   ├─ capa/                imagem da janelinha da capa (opcional)
+   ├─ musica/              ★ a música de fundo
+   ├─ css/style.css        visual (capa, papel, cores)
+   └─ js/
+      ├─ galeria.js        lista de arquivos (gerada sozinha — não editar)
+      └─ app.js            código que monta o álbum</pre>
+<p>★ = o que você usa no dia a dia.</p>
+
+<h2 id="passo">4. Passo a passo</h2>
+
+<h3>Colocar as fotos</h3>
+<ol>
+  <li>Coloque as fotos em <code>assets/fotos</code>.</li>
+  <li>Rode <code>atualizar-galeria.bat</code>.</li>
+</ol>
+<p>A ordem das páginas segue a ordem dos nomes. <b>Numere os arquivos</b> (<code>01.jpg</code>, <code>02.jpg</code>, … <code>10.jpg</code>) para controlar a sequência. Você pode separar em subpastas (ex.: <code>01-preparativos</code>, <code>02-cerimonia</code>, <code>03-festa</code>): elas entram na ordem dos nomes das pastas.</p>
+
+<h3>Colocar os vídeos</h3>
+<ol>
+  <li>Coloque os <code>.mp4</code> em <code>assets/video</code>.</li>
+  <li>Rode <code>atualizar-galeria.bat</code>.</li>
+</ol>
+<p>Os vídeos são encaixados entre as fotos: por padrão, <b>1 vídeo a cada 4 fotos</b> (muda em <code>config.js</code>, <code>videoACada</code>). Os vídeos que sobrarem vão para o final.</p>
+
+<h3>Mudar o jeito das páginas</h3>
+<p>Em <code>config.js</code>, a lista <code>modelos</code> define como cada página é montada, em sequência (e se repete):</p>
+<table>
+<tr><th>Modelo</th><th>O que é</th></tr>
+<tr><td><code>"solo"</code></td><td>1 foto/vídeo grande</td></tr>
+<tr><td><code>"duo"</code></td><td>2 (um em cima do outro)</td></tr>
+<tr><td><code>"trio"</code></td><td>1 grande em cima + 2 pequenos embaixo</td></tr>
+<tr><td><code>"quad"</code></td><td>4 em grade</td></tr>
+</table>
+<p>Exemplo: só uma foto grande por página → <code>modelos: ["solo"]</code>. Só pares → <code>["duo"]</code>.</p>
+
+<h3>Capa e música</h3>
+<ul>
+  <li><b>Capa:</b> uma imagem em <code>assets/capa</code> aparece na janelinha dourada da capa. Sem ela, a página usa a primeira foto.</li>
+  <li><b>Música:</b> uma música em <code>assets/musica</code>. Pasta vazia = toca uma trilha suave gerada pela página. Para ficar sem música, ponha <code>usarTrilhaGerada: false</code> no <code>config.js</code>.</li>
+  <li><b>Som de papel</b> ao virar a página: desligue com <code>sons: { virarPagina: false }</code>.</li>
+</ul>
+<div class="box warn">Os navegadores só liberam som depois de um clique do visitante. Por isso a música começa quando ele clica em “Abrir Álbum”.</div>
+
+<h3>Entregar de verdade (esconder os exemplos)</h3>
+<p>Enquanto as pastas de fotos e vídeos estiverem vazias, a página mostra exemplos da internet. Quando você colocar os seus arquivos, os exemplos somem sozinhos. Para nunca mostrar exemplos, use <code>mostrarDemo: false</code>.</p>
+
+<h2 id="textos">5. Textos e ajustes</h2>
+<p>Abra o <code>config.js</code> com o Bloco de Notas; cada item tem um comentário. Troque só o que está entre aspas, salve e aperte <span class="k">F5</span>. Mantenha as aspas e as vírgulas no fim das linhas.</p>
+<pre>noivos: { nome1: "Duda", nome2: "Mateus" },
+data: "18 de novembro de 2026",</pre>
+<p>Cada linha entre aspas em <code>mensagem</code> é um parágrafo da última página. Para mudar a cor da capa, do papel ou o tamanho das folhas, veja o começo de <code>assets/css/style.css</code> (bloco <code>:root</code>).</p>
+
+<h2 id="dicas">6. Tamanho e formato dos arquivos</h2>
+<table>
+<tr><th>Item</th><th>Formato</th><th>Recomendação</th></tr>
+<tr><td>Fotos</td><td>.jpg .png .webp</td><td>Lado maior de 1600 px, até ~400 KB cada. O álbum carrega as páginas aos poucos, mas arquivos leves deixam tudo mais fluido.</td></tr>
+<tr><td>Vídeos</td><td>.mp4 (H.264)</td><td>Curtos (5 a 20 s), 720p a 1080p, até ~8 MB. Como tocam mudos, pode tirar o áudio para ficarem menores.</td></tr>
+<tr><td>Música</td><td>.mp3 .m4a</td><td>Até ~5 MB.</td></tr>
+</table>
+<p>Quantidade: o álbum funciona bem com até ~150 fotos e ~30 vídeos. Evite acentos e espaços nos nomes das <b>pastas</b>.</p>
+
+<h2 id="problemas">7. Problemas comuns</h2>
+<table>
+<tr><th>O que aconteceu</th><th>O que fazer</th></tr>
+<tr><td>Coloquei fotos e não apareceram</td><td>Rode <code>atualizar-galeria.bat</code> e dê <span class="k">Ctrl</span>+<span class="k">F5</span> na página.</td></tr>
+<tr><td>Continuam aparecendo exemplos</td><td>As pastas estão vazias ou os formatos não são aceitos. Veja o resumo que o .bat mostra na tela.</td></tr>
+<tr><td>O .bat diz “Python não encontrado”</td><td>Instale o Python em python.org (marque “Add to PATH”) e rode de novo.</td></tr>
+<tr><td>Um vídeo não toca</td><td>Use .mp4 com vídeo H.264. Em alguns celulares, vídeos muito pesados demoram para iniciar.</td></tr>
+<tr><td>A última página tem só 1 foto</td><td>Normal: sobraram fotos que não completam um modelo. Ajuste a quantidade ou os <code>modelos</code>.</td></tr>
+<tr><td>No celular as páginas ficam pequenas</td><td>O álbum mostra duas páginas lado a lado. Em celular, deixe-o na horizontal (deitado) para ficar maior.</td></tr>
+<tr><td>A página ficou em branco</td><td>Provavelmente faltou uma aspa ou vírgula no <code>config.js</code>. Desfaça a última alteração.</td></tr>
+</table>
+
+<h2 id="dentro">8. Como funciona por dentro</h2>
+<ul>
+  <li><b>index.html</b>: só o esqueleto (área do álbum, botões abrir/voltar/seguir, música).</li>
+  <li><b>config.js</b> → <code>window.CONFIG</code>: nomes, data, textos, mensagem, modelos de página, música.</li>
+  <li><b>gerar_galeria.py</b> varre <code>assets/</code> e grava <code>assets/js/galeria.js</code> (<code>window.GALERIA</code>) com fotos, vídeos, música e capa. É necessário porque uma página aberta direto do computador não consegue listar pastas.</li>
+  <li><b>assets/js/app.js</b> junta tudo: intercala vídeos entre as fotos, divide em páginas (modelos), monta as folhas (a folha 0 é a capa; cada folha tem frente e verso) e controla as viradas. Seções numeradas nos comentários do arquivo.</li>
+  <li><b>Viradas de página</b>: CSS 3D. Cada folha é um elemento girado em <code>rotateY(-180deg)</code> em torno da lombada; a classe <code>flipped</code> marca as folhas já viradas. A abertura usa folhas extras animadas (<code>flutter</code>) para o efeito de “passar várias folhas”.</li>
+  <li><b>Desempenho</b>: imagens e vídeos só carregam perto da página atual; vídeos só tocam na página visível.</li>
+  <li>A ordem dos <code>&lt;script&gt;</code> no fim do <code>index.html</code> importa: config → galeria → app.</li>
+  <li>Para publicar: envie a pasta inteira (<code>index.html</code>, <code>config.js</code> e <code>assets/</code>) para qualquer hospedagem estática. O <code>.bat</code>, o <code>.py</code> e este manual não precisam ir.</li>
+</ul>
+
+</div></body>
+</html>
